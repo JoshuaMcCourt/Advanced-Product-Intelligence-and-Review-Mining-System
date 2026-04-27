@@ -46,125 +46,6 @@ The system enables deep analysis across textual, behavioural, and temporal dimen
 
 ---
 
-## ML Pipeline & Intelligence Flow
-
-Raw Review Data (CSV)
-
-│
-
-▼
-
-+-------------------------+
-
-| Data Loading            | -- Schema validation, ID creation, timestamp parsing
-
-| (data_loader.py)        |
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Preprocessing           | -- Text cleaning, normalization, filtering
-
-| (preprocessing.py)      |
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Feature Engineering     | -- Sentiment, embeddings, linguistic + statistical features
-
-| (features.py)           |
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Modeling Layer          | -- Isolation Forest (anomaly detection)
-
-| (models.py)             | -- KMeans (semantic clustering)
-
-|                         | -- Risk signal construction
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Calibration Layer       | -- Logistic regression probability calibration
-
-| (calibration.py)        |
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Temporal Intelligence   | -- Review velocity, sentiment drift, fraud spikes
-
-| (temporal_analysis.py)  |
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Explainability Layer    | -- Review-level reasoning
-
-| (explainability.py)     | -- Cluster-level summaries
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Evaluation Layer        | -- Model diagnostics, clustering quality, correlations
-
-| (evaluation.py)         |
-
-+-------------------------+
-
-│
-
-▼
-
-+-------------------------+
-
-| Visualization Layer     | -- Risk & cluster distributions
-
-| (visualization.py)      |
-
-+-------------------------+
-
-│
-
-▼
-
-Processed Outputs → Dashboard (Streamlit) → Business Insights
 
 ## System Overview (Business View)
 
@@ -301,6 +182,88 @@ flowchart TD
 
     O --> Q
 ```
+
+## Example Outputs
+
+This system generates a range of outputs spanning model predictions, analytical reports, and interactive visualisations.
+
+These outputs demonstrate the end-to-end capability of the platform—from raw data ingestion to actionable product intelligence.
+
+---
+
+### Dashboard Overview (Streamlit)
+
+The Streamlit dashboard provides an interactive interface for exploring risk, sentiment, and product-level insights.
+
+![Dashboard Overview](docs/images/dashboard_overview.png)
+
+Key capabilities:
+- Filter reviews by risk score and cluster
+- Explore sentiment vs risk relationships
+- Monitor cluster distributions
+- Inspect high-risk reviews in real time
+- View explainability outputs for flagged reviews
+
+---
+
+### Risk Score Distribution
+
+Distribution of computed risk scores across all reviews.
+
+![Risk Distribution](docs/images/risk_distribution.png)
+
+Highlights:
+- Clearly separates low vs high-risk reviews
+- Enables threshold tuning for fraud detection
+- Useful for operational alerting systems
+
+---
+
+### Cluster Distribution
+
+Semantic clustering of reviews based on embedding space.
+
+![Cluster Distribution](docs/images/cluster_distribution.png)
+
+Highlights:
+- Identifies dominant behavioural patterns
+- Enables segmentation of review types
+- Supports downstream product analysis
+
+---
+
+### Temporal Risk Trends
+
+Time-based aggregation of risk scores and anomaly signals.
+
+![Temporal Trends](docs/images/temporal_trends.png)
+
+Highlights:
+- Detects sudden spikes in suspicious activity
+- Tracks sentiment drift over time
+- Enables early fraud detection
+
+---
+
+### Explainability Output (Sample)
+
+Example of a model-generated explanation for a high-risk review:
+
+```json
+{
+  "risk_score": 0.87,
+  "fraud_probability": 0.91,
+  "risk_level": "high",
+  "reasons": [
+    "Highly unusual behavioural pattern",
+    "Strong mismatch between sentiment and rating",
+    "Excessive capitalisation (spam-like pattern)"
+  ]
+}
+
+```
+
+---
 
 
 ## Folder Structure & Detailed Contents
