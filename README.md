@@ -400,9 +400,7 @@ This project uses large-scale **Amazon product review data** along with product 
 
 Due to file size limitations, the datasets are **not included in this repository**.
 
----
-
-## How to Reproduce
+### How to Reproduce
 
 To run this project end-to-end:
 
@@ -421,7 +419,7 @@ This will automatically:
 - Train models
 - Produce outputs in `data/processed/`, `data/models/`, and `data/outputs/`
 
-## Expected Raw Files
+### Expected Raw Files
 
 Place the following files inside `data/raw/`:
 
@@ -430,8 +428,7 @@ Place the following files inside `data/raw/`:
 | `amazon_reviews.csv` | Main dataset containing review text, ratings, and metadata. |
 | `electronics_products.csv` | Product-level metadata (IDs, categories, attributes). |
 
-
-## Processed Data
+### Processed Data
 
 After running the pipeline, the following file will be generated, that should be placed in `data/processed/`:
 
@@ -439,7 +436,7 @@ After running the pipeline, the following file will be generated, that should be
 |----------|-------------|
 | `processed_reviews.csv` | Fully processed dataset with engineered features, risk scores, clusters, and predictions. |
 
-## Important Notes
+### Important Notes
 
 - All datasets are excluded via `.gitignore` due to size constraints
 - The full pipeline is **reproducible from raw data using the provided code**
