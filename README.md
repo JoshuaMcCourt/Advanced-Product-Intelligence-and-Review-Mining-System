@@ -166,6 +166,141 @@ Raw Review Data (CSV)
 
 Processed Outputs → Dashboard (Streamlit) → Business Insights
 
+## System Overview (Business View)
+
+```mermaid
+flowchart LR
+
+    %% =========================
+    %% INPUTS
+    %% =========================
+    A[Customer Reviews]
+    B[Product Metadata]
+    C[User Behaviour Signals]
+
+    %% =========================
+    %% CORE SYSTEM
+    %% =========================
+    D[Product Intelligence System]
+
+    %% =========================
+    %% ANALYTICS MODULES
+    %% =========================
+    E[Fraud Detection]
+    F[Customer Sentiment Analysis]
+    G[Review Behaviour Analysis]
+    H[Product Health Scoring]
+    I[Temporal Trend Monitoring]
+    J[Explainable AI Insights]
+
+    %% =========================
+    %% OUTPUTS
+    %% =========================
+    K[Fraud Probability per Review]
+    L[Risk Scores & Flags]
+    M[Product Quality Indicators]
+    N[Customer Experience Insights]
+    O[Anomaly Alerts & Spikes]
+    P[Human-Readable Explanations]
+
+    %% =========================
+    %% BUSINESS VALUE
+    %% =========================
+    Q[Better Decision Making]
+    R[Trust & Safety Enforcement]
+    S[Improved Product Quality]
+    T[Customer Experience Optimization]
+
+    %% =========================
+    %% FLOW
+    %% =========================
+    A --> D
+    B --> D
+    C --> D
+
+    D --> E
+    D --> F
+    D --> G
+    D --> H
+    D --> I
+    D --> J
+
+    E --> K
+    E --> L
+
+    F --> N
+    G --> L
+    H --> M
+    I --> O
+    J --> P
+
+    K --> Q
+    L --> Q
+    M --> R
+    N --> S
+    O --> R
+    P --> T
+```
+
+## Pipeline Architecture (Technical)
+
+```mermaid
+flowchart TD
+
+    %% =========================
+    %% DATA SOURCES
+    %% =========================
+    A[Raw Data Sources<br/>Amazon Reviews<br/>Product Metadata<br/>Future: Images]
+
+    %% =========================
+    %% CORE PIPELINE
+    %% =========================
+    B[src/data_loader.py<br/>Data Ingestion]
+    C[src/preprocessing.py<br/>Preprocessing]
+    D[src/features.py<br/>Feature Engineering]
+    E[src/models.py<br/>Modeling Layer]
+    F[src/calibration.py<br/>Calibration Layer]
+    G[src/temporal_analysis.py<br/>Temporal Intelligence]
+    H[src/explainability.py<br/>Explainability Engine]
+    I[src/evaluation.py<br/>Evaluation Layer]
+    J[src/visualization.py<br/>Visualization]
+
+    %% =========================
+    %% OUTPUTS
+    %% =========================
+    K[data/processed/<br/>processed_reviews.csv]
+    L[models/<br/>.pkl artifacts + scalers]
+    M[outputs/reports/<br/>JSON + CSV reports]
+    N[outputs/charts/<br/>visualizations]
+
+    %% =========================
+    %% DELIVERY
+    %% =========================
+    O[run_pipeline.py<br/>Execution Entry Point]
+    P[Streamlit Dashboard<br/>app/dashboard.py]
+    Q[Notebook<br/>full_notebook.ipynb]
+
+    %% =========================
+    %% FLOW
+    %% =========================
+    A --> B --> C --> D --> E --> F --> G --> H --> I --> J
+
+    %% Outputs
+    I --> M
+    J --> N
+    F --> L
+    E --> L
+    C --> K
+
+    %% Interfaces
+    O --> B
+    K --> P
+    M --> P
+    N --> P
+    H --> P
+
+    O --> Q
+```
 
 
 ## Folder Structure & Detailed Contents
