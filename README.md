@@ -46,52 +46,215 @@ The system enables deep analysis across textual, behavioural, and temporal dimen
 
 ---
 
-## Pipeline Architecture
+## ML Pipeline & Intelligence Flow
 
-The system follows a structured ML pipeline similar to real-world production systems:
+ ┌──────────────────────────────────────────────────────────────┐
+ │                  PRODUCT INTELLIGENCE SYSTEM                  │
+ │        Multimodal Review Mining & Fraud Detection            │
+ └──────────────────────────────────────────────────────────────┘
 
-Raw Review Data
+                         ┌────────────────────────────┐
+                         │       Raw Data Sources     │
+                         │                            │
+                         │  • Amazon Reviews          │
+                         │  • Product Metadata        │
+                         │  • (Future) Image Data     │
+                         └────────────┬───────────────┘
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                    Data Ingestion Layer
+                  (src/data_loader.py)
+ ───────────────────────────────────────────────────────────────
+   • Schema standardisation
+   • ID generation (review_id, product_id)
+   • Timestamp parsing & validation
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                    Preprocessing Layer
+                  (src/preprocessing.py)
+ ───────────────────────────────────────────────────────────────
+   • Text cleaning & normalization
+   • Duplicate / short review filtering
+   • Optional language filtering
+   • Structural signals (length, caps, punctuation, z-scores)
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+           Feature Engineering & Representation Layer
+                    (src/features.py)
+ ───────────────────────────────────────────────────────────────
+   • Sentence-BERT embeddings (semantic representation)
+   • VADER sentiment scoring
+   • Behavioural + linguistic features
+   • Derived signals (mismatch scores, density, z-scores)
+   • Final feature matrix construction (X)
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                       Modeling Layer
+                     (src/models.py)
+ ───────────────────────────────────────────────────────────────
+   • Isolation Forest → anomaly detection
+   • KMeans → semantic clustering
+   • Cluster assignment + distance-to-centroid
+   • Feature scaling (structured + embeddings)
+   • Risk feature matrix construction
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                   Risk Intelligence Layer
+          (src/models.py + src/calibration.py)
+ ───────────────────────────────────────────────────────────────
+   • Heuristic risk score (multi-signal fusion)
+   • Risk normalization (bounded [0,1])
+   • Logistic regression calibration model
+   • Calibrated fraud probability output
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                 Temporal Intelligence Layer
+               (src/temporal_analysis.py)
+ ───────────────────────────────────────────────────────────────
+   • Review velocity (volume trends)
+   • Sentiment drift detection
+   • Fraud spike detection (z-score anomalies)
+   • Multi-window aggregation (1D / 7D / 30D)
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                   Explainability Engine
+               (src/explainability.py)
+ ───────────────────────────────────────────────────────────────
+   • Review-level explanations (why flagged)
+   • Risk factor attribution
+   • Cluster-level summaries (top words + behaviour)
+   • Audit-ready interpretability outputs
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                     Evaluation Layer
+                 (src/evaluation.py)
+ ───────────────────────────────────────────────────────────────
+   • Anomaly detection metrics (ROC-AUC, PR-AUC)
+   • Clustering quality (silhouette, entropy)
+   • Distribution diagnostics & correlations
+   • Product-level scoring & validation
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                   Visualization Layer
+               (src/visualization.py)
+ ───────────────────────────────────────────────────────────────
+   • Risk score distributions
+   • Cluster distributions
+   • Static chart generation → outputs/charts/
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+               Output & Persistence Layer
+ ───────────────────────────────────────────────────────────────
+   • Processed dataset → data/processed/processed_reviews.csv
+   • Models → models/
+       - isolation_forest.pkl
+       - kmeans.pkl
+       - calibration_model.pkl
+   • Scalers → models/
+       - scaler.pkl
+       - scaler_structured.pkl
+       - scaler_embeddings.pkl
+       - scaler_calibration.pkl
+   • Reports → outputs/reports/
+       - evaluation.json
+       - temporal_analysis.json
+       - cluster_explanations.json
+       - review_explanations.csv
+       - feature_columns.json
+   • Charts → outputs/charts/
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                 Interface & Delivery Layer
+ ───────────────────────────────────────────────────────────────
+   • run_pipeline.py → config-driven execution entry point
+   • notebooks/full_notebook.ipynb → end-to-end narrative
+   • app/dashboard.py → Streamlit dashboard
+                                      │
+                                      ▼
+ ───────────────────────────────────────────────────────────────
+                Product Intelligence Outputs
+ ───────────────────────────────────────────────────────────────
+   • Fraud probability per review
+   • Risk scores + anomaly flags
+   • Product health indicators
+   • Cluster-based behavioural segmentation
+   • Temporal fraud insights (spikes & drift)
+   • Fully explainable AI decisions
 
-   ↓
 
-Data Ingestion & Schema Standardisation
+## Folder Structure & Detailed Contents
 
-   ↓
-
-Text Preprocessing & Cleaning
-
-   ↓
-
-Feature Engineering (NLP + Behavioural + Statistical)
-
-   ↓
-
-Modeling (Anomaly Detection + Clustering)
-
-   ↓
-
-Risk Scoring System
-
-   ↓
-
-Calibration (Probability Estimation)
-
-   ↓
-
-Explainability Layer
-
-   ↓
-
-Temporal Analysis
-
-   ↓
-
-Evaluation & Diagnostics
-
-   ↓
-
-Visualisation & Dashboard
-
+product-intelligence-system/
+│
+├── data/                          # Raw and processed datasets
+│   ├── raw/                       # Original input data
+│   │   ├── amazon_reviews.csv
+│   │   └── electronics_products.csv
+│   │
+│   └── processed/                 # Pipeline outputs (model-ready dataset)
+│       └── processed_reviews.csv
+│
+├── notebooks/                     # Exploratory + narrative notebooks
+│   └── full_notebook.ipynb        # End-to-end walkthrough (portfolio-facing)
+│
+├── src/                           # Core ML pipeline modules
+│   │
+│   ├── __init__.py
+│   ├── utils.py                   # Logging, timers, IO utilities, persistence
+│   │
+│   ├── data_loader.py             # Data ingestion + schema standardisation
+│   ├── preprocessing.py           # Text cleaning + normalization
+│   ├── features.py                # Feature engineering (NLP + embeddings)
+│   ├── models.py                  # Anomaly detection + clustering + risk scoring
+│   ├── calibration.py             # Probability calibration (risk → fraud likelihood)
+│   ├── explainability.py          # Review + cluster explainability
+│   ├── temporal_analysis.py       # Time-series intelligence + anomaly detection
+│   ├── evaluation.py              # Full evaluation + diagnostics suite
+│   ├── visualization.py           # Static chart generation
+│   │
+│   └── pipeline.py                # End-to-end orchestration logic
+│
+├── run_pipeline.py                # Execution entry point (config-driven pipeline)
+│
+├── models/                        # Serialized trained models
+│   ├── isolation_forest.pkl       # Anomaly detection model
+│   ├── kmeans.pkl                 # Clustering model
+│   ├── calibration_model.pkl      # Probability calibration model
+│   ├── scaler.pkl                 # General feature scaler
+│   ├── scaler_structured.pkl      # Structured feature scaler
+│   ├── scaler_embeddings.pkl      # Embedding scaler
+│   └── scaler_calibration.pkl     # Calibration scaler
+│
+├── outputs/
+│   ├── charts/                   # Generated visualisations
+│   │   ├── risk_distribution.png
+│   │   └── cluster_distribution.png
+│   │
+│   └── reports/                  # Analytical outputs and diagnostics
+│       ├── evaluation.json            # Model performance + system diagnostics
+│       ├── temporal_analysis.json     # Time-based trends and anomaly signals
+│       ├── cluster_explanations.json  # Cluster-level interpretability
+│       ├── review_explanations.csv    # High-risk review explanations
+│       └── feature_columns.json       # Feature schema for reproducibility
+│
+├── app/
+│   └── dashboard.py              # Streamlit dashboard for exploration
+│
+├── config.yaml                   # Central configuration (paths, hyperparameters)
+├── requirements.txt              # Dependencies
+├── .gitignore                    # Exclusions (data, models, outputs)
+└── README.md                     # Project documentation
 ---
 
 ## System Design
