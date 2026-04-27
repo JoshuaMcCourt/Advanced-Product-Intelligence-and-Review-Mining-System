@@ -1,0 +1,90 @@
+# config.yaml
+
+project:
+  name: "product-intelligence-system"
+  version: "1.0.0"
+
+seed: 42
+
+
+# Data Layer
+
+data:
+  data_path: "data/raw/amazon_reviews.csv"
+  metadata_path: "data/raw/product_metadata.csv"
+
+  min_review_length: 20
+  deduplicate: true
+  filter_non_english: false
+
+
+# Feature Layer
+
+features:
+  embedding_model: "all-MiniLM-L6-v2"
+  batch_size: 64
+  normalize_embeddings: true
+
+
+# Model Layer
+
+model:
+  n_clusters: 6
+  contamination: 0.05
+
+  isolation_forest:
+    n_estimators: 200
+    max_samples: "auto"
+
+  kmeans:
+    n_init: 10
+    max_iter: 300
+
+
+# Calibration Layer
+
+calibration:
+  method: "logistic_regression"
+  test_size: 0.2
+  threshold: 0.5
+
+
+# Temporal Intelligence
+
+temporal:
+  windows: ["1D", "7D", "30D"]
+  default_window: "7D"
+
+  smoothing_window: 3
+  anomaly_zscore_threshold: 2.0
+
+
+# Explainability
+
+explainability:
+  top_n_reviews: 10
+  top_n_words: 10
+
+
+# Evaluation
+
+evaluation:
+  enable_clustering_metrics: true
+  enable_product_metrics: true
+
+
+# Output Paths
+
+output:
+  processed_data_path: "data/processed/"
+  model_path: "models/"
+  scaler_path: "models/scalers/"
+  report_path: "outputs/reports/"
+  chart_path: "outputs/charts/"
+
+
+# Visualization
+
+visualization:
+  theme: "plotly"
+  max_points: 5000
