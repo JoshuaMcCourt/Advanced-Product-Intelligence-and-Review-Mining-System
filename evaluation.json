@@ -1,0 +1,310 @@
+{
+    "basic_metrics": {
+        "total_reviews": 17042,
+        "fake_rate": 0.05005281070296914,
+        "avg_sentiment": 0.5657365918159485,
+        "avg_rating": 4.4750616124867975,
+        "avg_risk_score": 0.076992012832527
+    },
+    "distribution": {
+        "sentiment_std": 0.38187965750694275,
+        "rating_std": 0.9972353870395307,
+        "risk_score_std": 0.03694030947452328,
+        "sentiment_skew": -1.4147579669952393
+    },
+    "correlation": {
+        "sentiment": {
+            "sentiment": 1.0,
+            "rating": 0.4122386212287172,
+            "risk_score": -0.632165344953645,
+            "anomaly_score": 0.34637393761672974
+        },
+        "rating": {
+            "sentiment": 0.4122386212287172,
+            "rating": 1.0,
+            "risk_score": -0.18588570724261116,
+            "anomaly_score": 0.2281178678804477
+        },
+        "risk_score": {
+            "sentiment": -0.632165344953645,
+            "rating": -0.18588570724261116,
+            "risk_score": 1.0,
+            "anomaly_score": -0.7170192028979238
+        },
+        "anomaly_score": {
+            "sentiment": 0.34637393761672974,
+            "rating": 0.2281178678804477,
+            "risk_score": -0.7170192028979238,
+            "anomaly_score": 1.0
+        }
+    },
+    "anomaly_eval": {
+        "roc_auc": 0.0,
+        "pr_auc": 0.02548413704003588
+    },
+    "clustering": {
+        "silhouette": 0.06316917389631271,
+        "cluster_entropy": 1.7310148458596881
+    },
+    "cluster_keywords": {
+        "0": [
+            [
+                "battery",
+                7629
+            ],
+            [
+                "great",
+                1627
+            ],
+            [
+                "price",
+                1560
+            ],
+            [
+                "brand",
+                1367
+            ],
+            [
+                "good",
+                1357
+            ],
+            [
+                "last",
+                1278
+            ],
+            [
+                "long",
+                1159
+            ],
+            [
+                "amazon",
+                1134
+            ],
+            [
+                "work",
+                1037
+            ],
+            [
+                "name",
+                761
+            ]
+        ],
+        "1": [
+            [
+                "love",
+                1003
+            ],
+            [
+                "kid",
+                584
+            ],
+            [
+                "bought",
+                523
+            ],
+            [
+                "great",
+                501
+            ],
+            [
+                "old",
+                439
+            ],
+            [
+                "year",
+                416
+            ],
+            [
+                "gift",
+                368
+            ],
+            [
+                "use",
+                355
+            ],
+            [
+                "game",
+                328
+            ],
+            [
+                "easy",
+                321
+            ]
+        ],
+        "2": [
+            [
+                "kindle",
+                1676
+            ],
+            [
+                "love",
+                622
+            ],
+            [
+                "book",
+                578
+            ],
+            [
+                "great",
+                522
+            ],
+            [
+                "fire",
+                513
+            ],
+            [
+                "one",
+                455
+            ],
+            [
+                "read",
+                436
+            ],
+            [
+                "reading",
+                409
+            ],
+            [
+                "use",
+                395
+            ],
+            [
+                "easy",
+                357
+            ]
+        ],
+        "3": [
+            [
+                "tablet",
+                3583
+            ],
+            [
+                "great",
+                1290
+            ],
+            [
+                "love",
+                824
+            ],
+            [
+                "use",
+                775
+            ],
+            [
+                "amazon",
+                747
+            ],
+            [
+                "good",
+                717
+            ],
+            [
+                "kid",
+                668
+            ],
+            [
+                "price",
+                638
+            ],
+            [
+                "apps",
+                562
+            ],
+            [
+                "easy",
+                502
+            ]
+        ],
+        "4": [
+            [
+                "price",
+                1073
+            ],
+            [
+                "great",
+                1045
+            ],
+            [
+                "good",
+                774
+            ],
+            [
+                "product",
+                466
+            ],
+            [
+                "work",
+                369
+            ],
+            [
+                "brand",
+                355
+            ],
+            [
+                "long",
+                286
+            ],
+            [
+                "last",
+                284
+            ],
+            [
+                "buy",
+                254
+            ],
+            [
+                "value",
+                235
+            ]
+        ],
+        "5": [
+            [
+                "great",
+                730
+            ],
+            [
+                "work",
+                614
+            ],
+            [
+                "use",
+                550
+            ],
+            [
+                "good",
+                486
+            ],
+            [
+                "easy",
+                367
+            ],
+            [
+                "love",
+                360
+            ],
+            [
+                "amazon",
+                333
+            ],
+            [
+                "like",
+                328
+            ],
+            [
+                "one",
+                310
+            ],
+            [
+                "well",
+                283
+            ]
+        ]
+    },
+    "product_scores": "            sentiment    rating  fake_review_flag  risk_score  review_count  \\\nproduct_id                                                                    \nproduct_0    0.549477  4.437126          0.017964    0.075922           167   \nproduct_1    0.581078  4.474286          0.074286    0.077691           175   \nproduct_10   0.572636  4.506024          0.036145    0.074477           166   \nproduct_11   0.606455  4.497076          0.029240    0.072793           171   \nproduct_12   0.561897  4.347561          0.054878    0.075137           164   \n...               ...       ...               ...         ...           ...   \nproduct_95   0.543642  4.476190          0.047619    0.076660           168   \nproduct_96   0.551409  4.538462          0.053254    0.077236           169   \nproduct_97   0.576733  4.550898          0.035928    0.077868           167   \nproduct_98   0.539016  4.485549          0.080925    0.080675           173   \nproduct_99   0.590376  4.584337          0.048193    0.076315           166   \n\n            quality_score  \nproduct_id                 \nproduct_0        0.571168  \nproduct_1        0.575517  \nproduct_10       0.582307  \nproduct_11       0.596500  \nproduct_12       0.561588  \n...                   ...  \nproduct_95       0.566028  \nproduct_96       0.572990  \nproduct_97       0.587579  \nproduct_98       0.558265  \nproduct_99       0.593259  \n\n[100 rows x 6 columns]",
+    "high_risk_reviews": "                         id             dateAdded           dateUpdated  \\\n15434  AVqkIiKWnnc1JgDc3khH  2017-03-06T14:59:44Z  2019-03-09T07:13:43Z   \n63     AVpgNzjwLJeJML43Kpxn  2015-10-30T08:59:32Z  2019-04-25T09:08:16Z   \n7903   AVpgNzjwLJeJML43Kpxn  2015-10-30T08:59:32Z  2019-04-25T09:08:16Z   \n17760  AVqVGZN9QMlgsOJE6eUZ  2017-03-03T16:56:05Z  2019-03-09T07:13:42Z   \n22763  AVqVGZQBQMlgsOJE6eUb  2017-03-03T16:56:05Z  2019-02-25T02:05:55Z   \n17761  AVqVGZN9QMlgsOJE6eUZ  2017-03-03T16:56:05Z  2019-03-09T07:13:42Z   \n12108  AVpf68A5ilAPnD_xkjSq  2015-05-11T12:33:03Z  2019-04-22T11:12:08Z   \n12378  AVpfpK8KLJeJML43BCuD  2017-01-04T03:51:17Z  2019-04-17T16:06:27Z   \n11211  AVpe7xlELJeJML43ypLz  2015-12-03T01:23:41Z  2019-04-24T02:17:42Z   \n11093  AVpe7xlELJeJML43ypLz  2015-12-03T01:23:41Z  2019-04-24T02:17:42Z   \n\n                                                    name  \\\n15434  All-New Fire HD 8 Tablet, 8 HD Display, Wi-Fi,...   \n63     AmazonBasics AAA Performance Alkaline Batterie...   \n7903   AmazonBasics AAA Performance Alkaline Batterie...   \n17760  Kindle Oasis E-reader with Leather Charging Co...   \n22763  Kindle Oasis E-reader with Leather Charging Co...   \n17761  Kindle Oasis E-reader with Leather Charging Co...   \n12108  AmazonBasics Backpack for Laptops up to 17-inches   \n12378  Amazon Tap Smart Assistant Alexaenabled (black...   \n11211  AmazonBasics AA Performance Alkaline Batteries...   \n11093  AmazonBasics AA Performance Alkaline Batteries...   \n\n                                  asins         brand  \\\n15434                        B01AHB9CYG        Amazon   \n63                B00QWO9P0O,B00LH3DMUO  Amazonbasics   \n7903              B00QWO9P0O,B00LH3DMUO  Amazonbasics   \n17760                        B00REQKWGA        Amazon   \n22763                        B00ZS0G0PG        Amazon   \n17761                        B00REQKWGA        Amazon   \n12108             B00EEBS9O0,B01CHQHIJK  Amazonbasics   \n12378                        B01BH83OOM        Amazon   \n11211  B00QWO9P0O,B01IB83NZG,B00MNV8E0C  Amazonbasics   \n11093  B00QWO9P0O,B01IB83NZG,B00MNV8E0C  Amazonbasics   \n\n                                              categories  primaryCategories  \\\n15434  Fire Tablets,Computers,Tablets,All Tablets,Ama...        Electronics   \n63     AA,AAA,Health,Electronics,Health & Household,C...    Health & Beauty   \n7903   AA,AAA,Health,Electronics,Health & Household,C...    Health & Beauty   \n17760  eBook Readers,E-Readers & Accessories,Electron...        Electronics   \n22763  E-Readers & Accessories,EBook Readers,Amazon B...  Electronics,Media   \n17761  eBook Readers,E-Readers & Accessories,Electron...        Electronics   \n12108  Portable Computer Accessories,Bags, Cases & Sl...        Electronics   \n12378  Amazon Echo,Home Theater & Audio,MP3 MP4 Playe...        Electronics   \n11211  AA,AAA,Electronics Features,Health,Electronics...    Health & Beauty   \n11093  AA,AAA,Electronics Features,Health,Electronics...    Health & Beauty   \n\n                                               imageURLs  \\\n15434  https://i5.walmartimages.com/asr/40d47665-8d37...   \n63     https://images-na.ssl-images-amazon.com/images...   \n7903   https://images-na.ssl-images-amazon.com/images...   \n17760  https://pisces.bbystatic.com/image2/BestBuy_US...   \n22763  https://www.barcodable.com/images/barcode/0848...   \n17761  https://pisces.bbystatic.com/image2/BestBuy_US...   \n12108  https://images-na.ssl-images-amazon.com/images...   \n12378  https://i.ebayimg.com/images/g/tnUAAOSwESdcftG...   \n11211  https://images-na.ssl-images-amazon.com/images...   \n11093  https://images-na.ssl-images-amazon.com/images...   \n\n                                                    keys  ...  \\\n15434  841667104690,allnewfirehd8tablet8hddisplaywifi...  ...   \n63     amazonbasics/hl002619,amazonbasicsaaaperforman...  ...   \n7903   amazonbasics/hl002619,amazonbasicsaaaperforman...  ...   \n17760  amazon/53003651,0848719057331,kindleoasiseread...  ...   \n22763  kindleoasisereaderwithleatherchargingcoverwaln...  ...   \n17761  amazon/53003651,0848719057331,kindleoasiseread...  ...   \n12108  amazonbasics/nc1306167r1,amazonbasicsbackpackf...  ...   \n12378  amazonecho/b01bh83oom,amazonamazontapportableb...  ...   \n11211  amazonbasicsaaperformancealkalinebatteries48co...  ...   \n11093  amazonbasicsaaperformancealkalinebatteries48co...  ...   \n\n      sentiment_rating_gap                                          embedding  \\\n15434               0.1981  [0.0056754234, -0.10977865, -0.012444574, -0.0...   \n63                  0.1982  [0.028473543, -0.002421791, -0.077367894, -0.0...   \n7903                0.1962  [-0.045834668, -0.03930864, -0.033525202, -0.0...   \n17760               0.0059  [-0.0037575685, 0.015758477, -0.024192307, 0.0...   \n22763               0.0113  [0.006130963, 0.009460527, -0.014295575, 0.062...   \n17761               0.0024  [-0.05651389, -0.021864368, 0.0068308096, 0.03...   \n12108               0.1956  [0.009486503, -0.01992529, -0.030370709, 0.012...   \n12378               0.0022  [-0.050891247, -0.08726352, 0.08281231, 0.0122...   \n11211               0.5815  [-0.02139119, -0.019724991, 0.0027707946, -0.0...   \n11093               0.3968  [-0.044474136, -0.027503982, -0.060242273, -0....   \n\n      embedding_norm word_density anomaly_score fake_review_flag  cluster  \\\n15434            1.0     0.184289      0.008553                0        3   \n63               1.0     0.167725     -0.004845                1        0   \n7903             1.0     0.178708      0.002751                0        0   \n17760            1.0     0.193293     -0.000773                1        2   \n22763            1.0     0.196019      0.004808                0        2   \n17761            1.0     0.180958      0.014212                0        2   \n12108            1.0     0.168872     -0.004884                1        2   \n12378            1.0     0.189311     -0.008384                1        5   \n11211            1.0     0.165817      0.011744                0        0   \n11093            1.0     0.169231     -0.010637                1        0   \n\n       cluster_distance  risk_score fraud_probability  \n15434         22.031986    1.000000      1.974804e-02  \n63            19.508087    0.617459      9.997142e-01  \n7903          17.313868    0.612368      2.342419e-01  \n17760         20.219307    0.467719      9.443880e-01  \n22763         19.383234    0.454210      1.885988e-02  \n17761         17.364799    0.446822      1.543044e-07  \n12108         22.558287    0.436448      9.996943e-01  \n12378         24.155508    0.374852      9.999956e-01  \n11211         19.480852    0.365552      2.949864e-06  \n11093         20.442278    0.362224      9.999987e-01  \n\n[10 rows x 52 columns]",
+    "risk_validation": {
+        "risk_vs_sentiment_corr": -0.6321653449536424,
+        "risk_vs_rating_corr": -0.18588570724261474,
+        "risk_distribution_std": 0.03694139332428437
+    }
+}

@@ -1,0 +1,15 @@
+[
+    "sentiment",
+    "rating_norm",
+    "sentiment_rating_gap",
+    "char_length",
+    "word_count",
+    "avg_word_length",
+    "caps_ratio",
+    "punctuation_density",
+    "exclamation_count",
+    "length_zscore",
+    "word_count_zscore",
+    "word_density",
+    "embedding_norm"
+]
