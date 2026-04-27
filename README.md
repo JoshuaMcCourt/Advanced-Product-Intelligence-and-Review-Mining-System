@@ -394,6 +394,60 @@ These features are fused into a **unified feature matrix** used for modeling and
 
 ---
 
+## Data Sources
+
+This project uses large-scale **Amazon product review data** along with product metadata for building the product intelligence system.
+
+Due to file size limitations, the datasets are **not included in this repository**.
+
+---
+
+## How to Reproduce
+
+To run this project end-to-end:
+
+1. Obtain a suitable Amazon reviews dataset (e.g. from Kaggle or public datasets)
+2. Place the raw files into: `data/raw/`
+3. Run the pipeline:
+
+```bash
+python run_pipeline.py
+```
+
+This will automatically:
+
+- Clean and preprocess the data
+- Generate features
+- Train models
+- Produce outputs in `data/processed/`, `data/models/`, and `data/outputs/`
+
+## Expected Raw Files
+
+Place the following files inside `data/raw/`:
+
+| Filename | Description |
+|----------|-------------|
+| `amazon_reviews.csv` | Main dataset containing review text, ratings, and metadata. |
+| `electronics_products.csv` | Product-level metadata (IDs, categories, attributes). |
+
+
+## Processed Data
+
+After running the pipeline, the following file will be generated, that should be placed in `data/processed/`:
+
+| Filename | Description |
+|----------|-------------|
+| `processed_reviews.csv` | Fully processed dataset with engineered features, risk scores, clusters, and predictions. |
+
+## Important Notes
+
+- All datasets are excluded via `.gitignore` due to size constraints
+- The full pipeline is **reproducible from raw data using the provided code**
+- No manual preprocessing is required — everything is handled by the pipeline
+- This mirrors real-world ML systems where data is stored externally and pipelines are used to regenerate outputs
+
+---
+
 ## Scale & Performance
 
 - Designed to handle large-scale review datasets
