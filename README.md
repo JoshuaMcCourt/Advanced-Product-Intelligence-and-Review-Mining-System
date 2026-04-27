@@ -55,8 +55,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Data Loading            | -- Schema validation, ID creation, timestamp parsing
+
 | (data_loader.py)        |
+
 +-------------------------+
 
 │
@@ -64,8 +67,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Preprocessing           | -- Text cleaning, normalization, filtering
+
 | (preprocessing.py)      |
+
 +-------------------------+
 
 │
@@ -73,8 +79,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Feature Engineering     | -- Sentiment, embeddings, linguistic + statistical features
+
 | (features.py)           |
+
 +-------------------------+
 
 │
@@ -82,9 +91,13 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Modeling Layer          | -- Isolation Forest (anomaly detection)
+
 | (models.py)             | -- KMeans (semantic clustering)
+
 |                         | -- Risk signal construction
+
 +-------------------------+
 
 │
@@ -92,8 +105,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Calibration Layer       | -- Logistic regression probability calibration
+
 | (calibration.py)        |
+
 +-------------------------+
 
 │
@@ -101,8 +117,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Temporal Intelligence   | -- Review velocity, sentiment drift, fraud spikes
+
 | (temporal_analysis.py)  |
+
 +-------------------------+
 
 │
@@ -110,8 +129,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Explainability Layer    | -- Review-level reasoning
+
 | (explainability.py)     | -- Cluster-level summaries
+
 +-------------------------+
 
 │
@@ -119,8 +141,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Evaluation Layer        | -- Model diagnostics, clustering quality, correlations
+
 | (evaluation.py)         |
+
 +-------------------------+
 
 │
@@ -128,8 +153,11 @@ Raw Review Data (CSV)
 ▼
 
 +-------------------------+
+
 | Visualization Layer     | -- Risk & cluster distributions
+
 | (visualization.py)      |
+
 +-------------------------+
 
 │
@@ -147,69 +175,119 @@ product-intelligence-system/
 │
 
 ├── data/                          # Raw and processed datasets
+
 │   ├── raw/                       # Original input data
+
 │   │   ├── amazon_reviews.csv
+
 │   │   └── electronics_products.csv
+
 │   │
+
 │   └── processed/                 # Pipeline outputs (model-ready dataset)
+
 │       └── processed_reviews.csv
+
 │
 
 ├── notebooks/                     # Exploratory + narrative notebooks
+
 │   └── full_notebook.ipynb        # End-to-end walkthrough (portfolio-facing)
+
 │
 
 ├── src/                           # Core ML pipeline modules
+
 │   │
+
 │   ├── __init__.py
+
 │   ├── utils.py                   # Logging, timers, IO utilities, persistence
+
 │   │
+
 │   ├── data_loader.py             # Data ingestion + schema standardisation
+
 │   ├── preprocessing.py           # Text cleaning + normalization
+
 │   ├── features.py                # Feature engineering (NLP + embeddings)
+
 │   ├── models.py                  # Anomaly detection + clustering + risk scoring
+
 │   ├── calibration.py             # Probability calibration (risk → fraud likelihood)
+
 │   ├── explainability.py          # Review + cluster explainability
+
 │   ├── temporal_analysis.py       # Time-series intelligence + anomaly detection
+
 │   ├── evaluation.py              # Full evaluation + diagnostics suite
+
 │   ├── visualization.py           # Static chart generation
+
 │   │
+
 │   └── pipeline.py                # End-to-end orchestration logic
+
 │
 
 ├── run_pipeline.py                # Execution entry point (config-driven pipeline)
+
 │
 
 ├── models/                        # Serialized trained models
+
 │   ├── isolation_forest.pkl       # Anomaly detection model
+
 │   ├── kmeans.pkl                 # Clustering model
+
 │   ├── calibration_model.pkl      # Probability calibration model
+
 │   ├── scaler.pkl                 # General feature scaler
+
 │   ├── scaler_structured.pkl      # Structured feature scaler
+
 │   ├── scaler_embeddings.pkl      # Embedding scaler
+
 │   └── scaler_calibration.pkl     # Calibration scaler
+
 │
 
 ├── outputs/
+
 │   ├── charts/                   # Generated visualisations
+
 │   │   ├── risk_distribution.png
+
 │   │   └── cluster_distribution.png
+
 │   │
+
 │   └── reports/                  # Analytical outputs and diagnostics
+
 │       ├── evaluation.json            # Model performance + system diagnostics
+
 │       ├── temporal_analysis.json     # Time-based trends and anomaly signals
+
 │       ├── cluster_explanations.json  # Cluster-level interpretability
+
 │       ├── review_explanations.csv    # High-risk review explanations
+
 │       └── feature_columns.json       # Feature schema for reproducibility
+
 │
 
 ├── app/
+
 │   └── dashboard.py              # Streamlit dashboard for exploration
+
 │
 
 ├── config.yaml                   # Central configuration (paths, hyperparameters)
+
 ├── requirements.txt              # Dependencies
+
 ├── .gitignore                    # Exclusions (data, models, outputs)
+
 └── README.md                     # Project documentation
 
 ---
